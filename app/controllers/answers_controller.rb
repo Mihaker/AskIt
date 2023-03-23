@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
         @answer = @question.answers.build answer_params
         
         if @answer.save
-          flash[:sucess] = 'Answers add!'
+          flash[:success] = 'Answers add!'
           redirect_to question_path(@question)
         else
            @answers = @question.answers.order  created_at: :desc
@@ -36,7 +36,7 @@ class AnswersController < ApplicationController
    def destroy
      @answer = @question.answers.find params[:id]
      @answer.destroy
-     flash[:sucess] = 'Answer Deleted!'
+     flash[:info] = 'Answer Deleted!'
      redirect_to question_path(@question)
    end
 
