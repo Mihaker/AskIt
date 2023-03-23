@@ -1,13 +1,18 @@
-<article class="mb-3">
-    <time datetime="<%= answer.formatted_created_at %>">
-      <%= answer.formatted_created_at %>
-    </time>
 
-    <div>
-      <%= sanitize answer.body %>
-    </div>
+ <%= tag.article class: 'mb-3 card', id: dom_id(answer) do %>
+  <div class="card-body">
+    <section class="card-text">
+      <small><time datetime="<%= answer.formatted_created_at %>">
+        <%= answer.formatted_created_at %>
+      </time></small>
 
-    <%= link_to 'Delete', question_answer_path(@question, answer), class: 'btn btn-danger btn-xs',
+      <div class="mt-2 mb-3">
+        <%= sanitize answer.body %>
+      </div>
+    </section>
+
+   <%= link_to 'Delete', question_answer_path(@question, answer), class: 'btn btn-danger btn-xs',
       data: { turbo_method: "delete" } %>
       <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-secondary' %>
-  </article>
+  </div>
+<% end %>

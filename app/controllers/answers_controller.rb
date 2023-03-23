@@ -1,5 +1,8 @@
 class AnswersController < ApplicationController
-before_action :set_question!
+  include ActionView::RecordIdentifier
+  
+
+  before_action :set_question!
 
  
     def edit 
@@ -10,7 +13,7 @@ before_action :set_question!
         @answer = @question.answers.find params[:id] 
             if @answer.update answer_params
               flash[:sucess] = 'Question updated'
-              redirect_to  question_path(@question)
+              redirect_to question_path(@question, anchor: dom_id(@answer))
             else
               render :edit
             end
