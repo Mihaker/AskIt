@@ -9,6 +9,8 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'bootstrap', '~> 5.2.2'
 
+gem 'draper'
+
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
@@ -28,6 +30,8 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
+gem 'valid_email'
 
 gem 'pagy', '~> 4.10'
 

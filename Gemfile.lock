@@ -51,6 +51,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.0.4.2)
       activesupport (= 7.0.4.2)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (7.0.4.2)
       activemodel (= 7.0.4.2)
       activesupport (= 7.0.4.2)
@@ -83,6 +87,13 @@ GEM
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    draper (4.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+      ruby2_keywords
     erubi (1.12.0)
     execjs (2.8.1)
     faker (3.1.1)
@@ -163,6 +174,9 @@ GEM
     rake (13.0.6)
     reline (0.3.2)
       io-console (~> 0.5)
+    request_store (1.5.1)
+      rack (>= 1.4)
+    ruby2_keywords (0.0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -171,6 +185,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    simpleidn (0.2.1)
+      unf (~> 0.1.4)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -190,6 +206,13 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.2)
+    valid_email (0.1.4)
+      activemodel
+      mail (>= 2.6.1)
+      simpleidn
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -208,6 +231,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.2.2)
   debug
+  draper
   faker
   importmap-rails
   jbuilder
@@ -219,6 +243,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  valid_email
   web-console
 
 RUBY VERSION
