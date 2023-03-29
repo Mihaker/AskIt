@@ -36,7 +36,7 @@ class AnswersController < ApplicationController
    def destroy
      @answer = @question.answers.find params[:id]
      @answer.destroy
-     flash[:info] = 'Answer Deleted!'
+     flash[:success] = 'Answer Deleted!'
      redirect_to question_path(@question)
    end
 
