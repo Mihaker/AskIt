@@ -1,0 +1,13 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.1 
+
+Rails/I18nLocaleTexts:
+  Enabled: false
