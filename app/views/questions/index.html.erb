@@ -8,6 +8,11 @@
 
 <% @questions.each do |question| %>
   <article class="card mt-3">
+    <selector class="card-header">
+      <%= question.user.name_or_email%>
+    </selector>
+
+
     <div class="card-body">
       <h4><%= question.title %></h2>
 

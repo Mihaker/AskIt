@@ -4,6 +4,10 @@ class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
 
   has_secure_password validations: false
+
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+
   validates :password, confirmation: true, allow_blank: true,
                        length: { minimum: 8, maximum: 50 }
 
