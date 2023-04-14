@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
     @user.admin_edit = true
     if @user.update user_params
       flash[:success] = 'users update!'
-      redirect_to admin_user_path
+      redirect_to admin_users_path
     else
       render :edit
     end
