@@ -17,10 +17,14 @@
             </div>
           </div>
         </section>
+          <% if policy(answer).edit? %>
+           <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-secondary' %>
+          <% end %>
 
-        <%= link_to 'Delete', question_answer_path(@question, answer), class: 'btn btn-danger btn-xs',
-          data: { turbo_method: "delete" } %>
-        <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-secondary' %>
+          <% if policy(answer).edit? %>
+            <%= link_to 'Delete', question_answer_path(@question, answer), class: 'btn btn-danger btn-xs',
+              data: { turbo_method: "delete" } %>
+          <%  end %>
       </div>
     </div>
   </div>

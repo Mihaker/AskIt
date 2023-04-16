@@ -8,15 +8,15 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by email: params[:email]
-      if user&.authenticate(params[:password])
-        do_sign_in user
-        remember(user) if params[:remember_me] == '1'
-        flash[:success] = "Welcome to back, #{current_user.name_or_email}!"
-        redirect_to root_path
-      else
-        render :new
-        flash[:warning] = 'Incorrect email and/or password'
-      end
+    if user&.authenticate(params[:password])
+      do_sign_in user
+      remember(user) if params[:remember_me] == '1'
+      flash[:success] = "Welcome to back, #{current_user.name_or_email}!"
+      redirect_to root_path
+    else
+      flash[:error] = 'Incorrect email and/or password'
+      render :new
+    end
   end
 
   def destroy
@@ -30,6 +30,6 @@ class SessionsController < ApplicationController
   def do_sign_in(user)
     sing_in user
     remember(user) if params[:remember_me] == '1'
-    flash[:success] = "Welcome to back, #{current_user.name_or_email}!"
+    flash.now[:success] = "Welcome to back, #{current_user.name_or_email}!"
   end
 end

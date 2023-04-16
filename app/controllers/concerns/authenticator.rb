@@ -39,7 +39,7 @@ module Authenticator
     def require_authentication
       return if user_signed_in?
 
-      flash[:warning] = 'Ви не уввійшли в систему'
+      flash[:notice] = 'Ви не уввійшли в систему'
       redirect_to root_path
     end
 

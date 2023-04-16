@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+  # before_action :require_authentication, except: %i[show index]
   before_action :set_question!, only: %i[show destroy edit update]
-  before_action :require_authentication, only: %i[create update destroy]
+  before_action :authorize_question!
+  after_action :verify_authorized
 
   def index
     @pagy, @questions = pagy Question.order(created_at: :desc)
@@ -44,8 +46,8 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:info] = 'Question deleted'
-    redirect_to  questions_path
+    flash[:error] = 'Question deleted'
+    redirect_to questions_path
   end
 
   private
@@ -56,5 +58,9 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title, :body)
+  end
+
+  def authorize_question!
+    authorize(@question || Question)
   end
 end
