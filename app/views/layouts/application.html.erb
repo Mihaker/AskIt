@@ -23,6 +23,10 @@
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><%= link_to 'Home', root_path, class: 'nav-link px-2 text-white' %></li>
             <li><%= link_to 'Questions', questions_path, class: 'nav-link px-2 text-white' %></li>
+
+            <% if policy([:admin, :user]).index?%>
+              <li><%= link_to 'AdminPanel', admin_users_path, class: 'nav-link px-2 text-white' %></li>
+            <%  end %>
           </ul>
           
           <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
@@ -49,16 +53,20 @@
         </ul>
         </nav>
       </div>
+
     </header>
+    
     
 
 
     <main class="container mt-3">
-      <% flash.each do |k, v| %>
-        <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
+      <% flash.each do |type, message| %>
+        <div class="<%= flash_class(type) %> shadow-sm p-3 mb-5 roundedd">
+          <%= message %>
+        </div>
       <% end %>
-      
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js" integrity="sha512-4L4UPsJzPj+04uf45ucm1ySv1yTgfrBLTQeH9X9pkzjZg0bEw7/LQ56cInA+7rZtMgeuVMTBcx/rpXuA5lnYYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <%= yield %>
+      <%= yield %>
+    </main>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js" integrity="sha512-4L4UPsJzPj+04uf45ucm1ySv1yTgfrBLTQeH9X9pkzjZg0bEw7/LQ56cInA+7rZtMgeuVMTBcx/rpXuA5lnYYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
